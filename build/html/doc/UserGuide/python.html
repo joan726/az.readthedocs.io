@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Python User Guide &mdash; Analytics Zoo  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Colab User Guide" href="colab.html" />
+    <link rel="prev" title="TensorFlow 2 Quickstart" href="../Orca/QuickStart/orca-tf2keras-quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Analytics Zoo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf-quickstart.html">TensorFlow 1.15 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-keras-quickstart.html">Keras 2.3 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-pytorch-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf2keras-quickstart.html">TensorFlow 2 Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install"><strong>1. Install</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-release"><strong>1.1 Official Release</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nightly-build"><strong>1.2 Nightly Build</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#run"><strong>2. Run</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-shell"><strong>2.1 Interactive Shell</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#jupyter-notebook"><strong>2.2 Jupyter Notebook</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-script"><strong>2.3 Python Script</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#python-dependencies"><strong>3. Python Dependencies</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compatibility"><strong>4. Compatibility</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Colab User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">K8s User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hadoop.html">Hadoop/YARN User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="databricks.html">Databricks User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scala.html">Scala User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ray.html">RayOnSpark User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zouwu.html">Zouwu User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Orca Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/orca-context.html">Orca Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/data-parallel-processing.html">Distributed Data-Parallel Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/distributed-training-inference.html">Distributed Training and Inference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Real-World Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Application/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Application/powered-by.html">Powered By</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Analytics Zoo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Python User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/doc/UserGuide/python.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="python-user-guide">
+<h1>Python User Guide<a class="headerlink" href="#python-user-guide" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="install">
+<h2><strong>1. Install</strong><a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">We recommend using <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/">conda</a> to prepare the Python environment as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n zoo <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7  <span class="c1"># &quot;zoo&quot; is conda environment name, you can use any name you like.</span>
+conda activate zoo
+</pre></div>
+</div>
+</li>
+<li><p class="first">You need to install JDK in the environment, and properly set the environment variable <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>. <strong>JDK8</strong> is highly recommended.</p>
+<p>You may take the following commands as a reference for installing <a class="reference external" href="https://openjdk.java.net/install/">OpenJDK</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Ubuntu</span>
+sudo apt-get install openjdk-8-jre
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-8-openjdk-amd64/
+
+<span class="c1"># For CentOS</span>
+su -c <span class="s2">&quot;yum install java-1.8.0-openjdk&quot;</span>
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.282.b08-1.el7_9.x86_64/jre
+
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin
+java -version  <span class="c1"># Verify the version of JDK.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="section" id="official-release">
+<h3><strong>1.1 Official Release</strong><a class="headerlink" href="#official-release" title="Permalink to this headline">¶</a></h3>
+<p>You can install the latest release version of Analytics Zoo as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install analytics-zoo
+</pre></div>
+</div>
+<p><em><strong>Note:</strong> Installing Analytics Zoo will automatically install <code class="docutils literal notranslate"><span class="pre">bigdl==0.12.1</span></code>, <code class="docutils literal notranslate"><span class="pre">pyspark==2.4.3</span></code>, <code class="docutils literal notranslate"><span class="pre">conda-pack==0.3.1</span></code> and their dependencies if they haven’t been detected in your conda environment.</em></p>
+</div>
+<div class="section" id="nightly-build">
+<h3><strong>1.2 Nightly Build</strong><a class="headerlink" href="#nightly-build" title="Permalink to this headline">¶</a></h3>
+<p>You can install the latest nightly build of Analytics Zoo as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install --pre analytics-zoo
+</pre></div>
+</div>
+<p>Alternatively, you can find the list of the nightly build versions <a class="reference external" href="https://pypi.org/project/analytics-zoo/#history">here</a>, and install a specific version as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install analytics-zoo<span class="o">=</span>version
+</pre></div>
+</div>
+<p><em><strong>Note:</strong> If you are using a custom URL of Python Package Index, you may need to check whether the latest packages have been sync’ed with pypi.
+Or you can add the option <code class="docutils literal notranslate"><span class="pre">-i</span> <span class="pre">https://pypi.python.org/simple</span></code> when pip install to use pypi as the index-url.</em></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="run">
+<h2><strong>2. Run</strong><a class="headerlink" href="#run" title="Permalink to this headline">¶</a></h2>
+<p><em><strong>Note:</strong> Installing Analytics Zoo from pip will automatically install <code class="docutils literal notranslate"><span class="pre">pyspark</span></code>. To avoid possible conflicts, you are highly recommended to  <strong>unset the environment variable <code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code></strong>  if it exists in your environment.</em></p>
+<div class="section" id="interactive-shell">
+<h3><strong>2.1 Interactive Shell</strong><a class="headerlink" href="#interactive-shell" title="Permalink to this headline">¶</a></h3>
+<p>You may test if the installation is successful using the interactive Python shell as follows:</p>
+<ul>
+<li><p class="first">Type <code class="docutils literal notranslate"><span class="pre">python</span></code> in the command line to start a REPL.</p>
+</li>
+<li><p class="first">Try to run the example code below to verify the installation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zoo</span>
+<span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">zoo</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>  <span class="c1"># Verify the version of analytics-zoo.</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">init_orca_context</span><span class="p">()</span>  <span class="c1"># Initiation of analytics-zoo on the underlying cluster.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="jupyter-notebook">
+<h3><strong>2.2 Jupyter Notebook</strong><a class="headerlink" href="#jupyter-notebook" title="Permalink to this headline">¶</a></h3>
+<p>You can start the Jupyter notebook as you normally do using the following command and run Analytics Zoo programs directly in a Jupyter notebook:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook --notebook-dir<span class="o">=</span>./ --ip<span class="o">=</span>* --no-browser
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-script">
+<h3><strong>2.3 Python Script</strong><a class="headerlink" href="#python-script" title="Permalink to this headline">¶</a></h3>
+<p>You can directly write Analytics Zoo programs in a Python file (e.g. script.py) and run in the command line as a normal Python program:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python script.py
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="python-dependencies">
+<h2><strong>3. Python Dependencies</strong><a class="headerlink" href="#python-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>We recommend using <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/">conda</a> to manage your Python dependencies. Libraries installed in the current conda environment will be automatically distributed to the cluster when calling <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code>. You can also add extra dependencies as <code class="docutils literal notranslate"><span class="pre">.py</span></code>, <code class="docutils literal notranslate"><span class="pre">.zip</span></code> and <code class="docutils literal notranslate"><span class="pre">.egg</span></code> files by specifying <code class="docutils literal notranslate"><span class="pre">extra_python_lib</span></code> argument in <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code>.</p>
+<p>For more details, please refer to <a class="reference internal" href="../Orca/Overview/orca-context.html"><span class="doc">Orca Context</span></a>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="compatibility">
+<h2><strong>4. Compatibility</strong><a class="headerlink" href="#compatibility" title="Permalink to this headline">¶</a></h2>
+<p>Analytics Zoo has been tested on <strong>Python 3.6 and 3.7</strong> with the following library versions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">pyspark</span><span class="o">==</span><span class="m">2</span>.4.3
+<span class="nv">ray</span><span class="o">==</span><span class="m">1</span>.2.0
+<span class="nv">tensorflow</span><span class="o">==</span><span class="m">1</span>.15.0 or &gt;2.0
+pytorch&gt;<span class="o">=</span><span class="m">1</span>.5.0
+torchvision&gt;<span class="o">=</span><span class="m">0</span>.6.0
+<span class="nv">horovod</span><span class="o">==</span><span class="m">0</span>.19.2
+mxnet&gt;<span class="o">=</span><span class="m">1</span>.6.0
+bayesian-optimization<span class="o">==</span><span class="m">1</span>.1.0
+<span class="nv">dask</span><span class="o">==</span><span class="m">2</span>.14.0
+<span class="nv">h5py</span><span class="o">==</span><span class="m">2</span>.10.0
+<span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.18.1
+opencv-python<span class="o">==</span><span class="m">4</span>.2.0.34
+<span class="nv">pandas</span><span class="o">==</span><span class="m">1</span>.0.3
+<span class="nv">Pillow</span><span class="o">==</span><span class="m">7</span>.1.1
+<span class="nv">protobuf</span><span class="o">==</span><span class="m">3</span>.11.4
+<span class="nv">psutil</span><span class="o">==</span><span class="m">5</span>.7.0
+<span class="nv">pyarrow</span><span class="o">==</span><span class="m">0</span>.17.0
+<span class="nv">py4j</span><span class="o">==</span><span class="m">0</span>.10.7
+<span class="nv">redis</span><span class="o">==</span><span class="m">3</span>.4.1
+scikit-learn<span class="o">==</span><span class="m">0</span>.22.2.post1
+<span class="nv">scipy</span><span class="o">==</span><span class="m">1</span>.4.1
+<span class="nv">tensorboard</span><span class="o">==</span><span class="m">1</span>.15.0
+<span class="nv">tensorboardX</span><span class="o">==</span><span class="m">2</span>.0
+tensorflow-datasets<span class="o">==</span><span class="m">3</span>.2.0
+tensorflow-estimator<span class="o">==</span><span class="m">1</span>.15.1
+tensorflow-gan<span class="o">==</span><span class="m">2</span>.0.0
+tensorflow-hub<span class="o">==</span><span class="m">0</span>.8.0
+tensorflow-metadata<span class="o">==</span><span class="m">0</span>.21.1
+tensorflow-probability<span class="o">==</span><span class="m">0</span>.7.0
+<span class="nv">Theano</span><span class="o">==</span><span class="m">1</span>.0.4
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="colab.html" class="btn btn-neutral float-right" title="Colab User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Orca/QuickStart/orca-tf2keras-quickstart.html" class="btn btn-neutral float-left" title="TensorFlow 2 Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Analytics Zoo Authors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Scala User Guide &mdash; Analytics Zoo  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="RayOnSpark User Guide" href="ray.html" />
+    <link rel="prev" title="Databricks User Guide" href="databricks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Analytics Zoo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf-quickstart.html">TensorFlow 1.15 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-keras-quickstart.html">Keras 2.3 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-pytorch-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf2keras-quickstart.html">TensorFlow 2 Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Colab User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">K8s User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hadoop.html">Hadoop/YARN User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="databricks.html">Databricks User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scala User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#try-analytics-zoo-examples"><strong>1. Try Analytics Zoo Examples</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download-and-config"><strong>1.1 Download and config</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-spark-interactive-shell"><strong>1.2 Use Spark interactive shell</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-analytics-zoo-examples"><strong>1.3 Run Analytics Zoo examples</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-analytics-zoo-applications"><strong>2. Build Analytics Zoo Applications</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-analytics-zoo-dependency"><strong>2.1 Add Analytics Zoo dependency</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-release"><strong>2.1.1 official Release</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nightly-build"><strong>2.1.2 Nightly Build</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#build-a-scala-project"><strong>2.2 Build a Scala project</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ray.html">RayOnSpark User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zouwu.html">Zouwu User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Orca Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/orca-context.html">Orca Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/data-parallel-processing.html">Distributed Data-Parallel Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/distributed-training-inference.html">Distributed Training and Inference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Real-World Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Application/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Application/powered-by.html">Powered By</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Analytics Zoo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Scala User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/doc/UserGuide/scala.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="scala-user-guide">
+<h1>Scala User Guide<a class="headerlink" href="#scala-user-guide" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="try-analytics-zoo-examples">
+<h2><strong>1. Try Analytics Zoo Examples</strong><a class="headerlink" href="#try-analytics-zoo-examples" title="Permalink to this headline">¶</a></h2>
+<p>This section will show you how to download Analytics Zoo prebuild packages and run the build-in examples.</p>
+<div class="section" id="download-and-config">
+<h3><strong>1.1 Download and config</strong><a class="headerlink" href="#download-and-config" title="Permalink to this headline">¶</a></h3>
+<p>You can download the Analytics Zoo official releases and nightly build from the <a class="reference internal" href="../release.html"><span class="doc">Release Page</span></a>. After extracting the prebuild package, you need to set environment variables <strong>ANALYTICS_ZOO_HOME</strong> and <strong>SPARK_HOME</strong> as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>folder path where you extract the Spark package
+<span class="nb">export</span> <span class="nv">ANALYTICS_ZOO_HOME</span><span class="o">=</span>folder path where you extract the Analytics Zoo package
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-spark-interactive-shell">
+<h3><strong>1.2 Use Spark interactive shell</strong><a class="headerlink" href="#use-spark-interactive-shell" title="Permalink to this headline">¶</a></h3>
+<p>You can  try Analytics Zoo using the Spark interactive shell as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">ANALYTICS_ZOO_HOME</span><span class="si">}</span>/bin/spark-shell-with-zoo.sh --master local<span class="o">[</span><span class="m">2</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>You will then see a welcome message like below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  &#39;_/
+   /___/ .__/\_,_/_/ /_/\_\   version 2.4.3
+      /_/
+         
+Using Scala version 2.11.12 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_112)
+Type in expressions to have them evaluated.
+Type :help for more information.
+</pre></div>
+</div>
+<p>Before you try Analytics Zoo APIs, you should use <code class="docutils literal notranslate"><span class="pre">initNNcontext</span></code> to verify your environment:</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span>scala&gt; import com.intel.analytics.zoo.common.NNContext
+import com.intel.analytics.zoo.common.NNContext
+
+scala&gt; val sc = NNContext.initNNContext(&quot;Run Example&quot;)
+2021-01-26 10:19:52 WARN  SparkContext:66 - Using an existing SparkContext; some configuration may not take effect.
+2021-01-26 10:19:53 WARN  SparkContext:66 - Using an existing SparkContext; some configuration may not take effect.
+sc: org.apache.spark.SparkContext = org.apache.spark.SparkContext@487f025
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-analytics-zoo-examples">
+<h3><strong>1.3 Run Analytics Zoo examples</strong><a class="headerlink" href="#run-analytics-zoo-examples" title="Permalink to this headline">¶</a></h3>
+<p>You can run an Analytics Zoo example, e.g., the <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/tree/master/zoo/src/main/scala/com/intel/analytics/zoo/examples/recommendation">Wide &amp; Deep Recommendation</a>, as a standard Spark program (running in either local mode or cluster mode) as follows:</p>
+<ol class="simple">
+<li>Download Census Income Dataset to <code class="docutils literal notranslate"><span class="pre">./data/census</span></code> from <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Census+Income">here</a>.</li>
+<li>Run the following command:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spark local mode</span>
+<span class="si">${</span><span class="nv">ANALYTICS_ZOO_HOME</span><span class="si">}</span>/bin/spark-submit-scala-with-zoo.sh <span class="se">\ </span>
+  --master local<span class="o">[</span><span class="m">2</span><span class="o">]</span> <span class="se">\</span>
+  --class com.intel.analytics.zoo.examples.recommendation.WideAndDeepExample <span class="se">\</span>
+  dist/lib/analytics-zoo-bigdl_0.12.1-spark_2.4.3-0.9.0-jar-with-dependencies.jar <span class="se">\ </span>  <span class="c1">#change to your jar file if your download is not spark_2.4.3-0.9.0</span>
+  --inputDir ./data/census <span class="se">\</span>
+  --batchSize <span class="m">320</span> <span class="se">\</span>
+  --maxEpoch <span class="m">20</span> <span class="se">\</span>
+  --dataset census
+
+<span class="c1"># Spark standalone mode</span>
+<span class="si">${</span><span class="nv">ANALYTICS_ZOO_HOME</span><span class="si">}</span>/bin/spark-submit-scala-with-zoo.sh <span class="se">\</span>
+  --master spark://... <span class="se">\ </span>        <span class="c1">#add your spark master address</span>
+  --executor-cores cores_per_executor <span class="se">\</span>
+  --total-executor-cores total_cores_for_the_job <span class="se">\</span>
+  --class com.intel.analytics.zoo.examples.recommendation.WideAndDeepExample <span class="se">\</span>
+  dist/lib/analytics-zoo-bigdl_0.12.1-spark_2.4.3-0.9.0-jar-with-dependencies.jar <span class="se">\ </span>  <span class="c1">#change to your jar file if your download is not spark_2.4.3-0.9.0</span>
+  --inputDir ./data/census <span class="se">\</span>
+  --batchSize <span class="m">320</span> <span class="se">\</span>
+  --maxEpoch <span class="m">20</span> <span class="se">\</span>
+  --dataset census
+
+<span class="c1"># Spark yarn client mode, please make sure the right HADOOP_CONF_DIR is set</span>
+<span class="si">${</span><span class="nv">ANALYTICS_ZOO_HOME</span><span class="si">}</span>/bin/spark-submit-scala-with-zoo.sh <span class="se">\</span>
+  --master yarn <span class="se">\</span>
+  --deploy-mode client <span class="se">\</span>
+  --executor-cores cores_per_executor <span class="se">\</span>
+  --num-executors executors_number <span class="se">\</span>
+  --class com.intel.analytics.zoo.examples.recommendation.WideAndDeepExample <span class="se">\</span>
+  dist/lib/analytics-zoo-bigdl_0.12.1-spark_2.4.3-0.9.0-jar-with-dependencies.jar <span class="se">\ </span>  <span class="c1">#change to your jar file if your download is not spark_2.4.3-0.9.0</span>
+  --inputDir ./data/census <span class="se">\</span>
+  --batchSize <span class="m">320</span> <span class="se">\</span>
+  --maxEpoch <span class="m">20</span> <span class="se">\</span>
+  --dataset census
+
+<span class="c1"># Spark yarn cluster mode, please make sure the right HADOOP_CONF_DIR is set</span>
+<span class="si">${</span><span class="nv">ANALYTICS_ZOO_HOME</span><span class="si">}</span>/bin/spark-submit-scala-with-zoo.sh <span class="se">\</span>
+  --master yarn <span class="se">\</span>
+  --deploy-mode cluster <span class="se">\</span>
+  --executor-cores cores_per_executor <span class="se">\</span>
+  --num-executors executors_number <span class="se">\</span>
+  --class com.intel.analytics.zoo.examples.recommendation.WideAndDeepExample <span class="se">\</span>
+  dist/lib/analytics-zoo-bigdl_0.12.1-spark_2.4.3-0.9.0-jar-with-dependencies.jar <span class="se">\ </span>  <span class="c1">#change to your jar file if your download is not spark_2.4.3-0.9.0</span>
+  --inputDir ./data/census <span class="se">\</span>
+  --batchSize <span class="m">320</span> <span class="se">\</span>
+  --maxEpoch <span class="m">20</span> <span class="se">\</span>
+  --dataset census
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="build-analytics-zoo-applications">
+<h2><strong>2. Build Analytics Zoo Applications</strong><a class="headerlink" href="#build-analytics-zoo-applications" title="Permalink to this headline">¶</a></h2>
+<p>This section will show you how to build your own deep learning project with Analytics Zoo.</p>
+<div class="section" id="add-analytics-zoo-dependency">
+<h3><strong>2.1 Add Analytics Zoo dependency</strong><a class="headerlink" href="#add-analytics-zoo-dependency" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="official-release">
+<h4><strong>2.1.1 official Release</strong><a class="headerlink" href="#official-release" title="Permalink to this headline">¶</a></h4>
+<p>Currently, Analytics Zoo releases are hosted on maven central; below is an example to add the Analytics Zoo dependency to your own project:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.intel.analytics.zoo<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>analytics-zoo-bigdl_0.12.1-spark_2.4.3<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.9.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+<p>You can find the other SPARK version <a class="reference external" href="https://search.maven.org/search?q=analytics-zoo-bigdl">here</a>, such as <code class="docutils literal notranslate"><span class="pre">spark_2.1.1</span></code>, <code class="docutils literal notranslate"><span class="pre">spark_2.2.1</span></code>, <code class="docutils literal notranslate"><span class="pre">spark_2.3.1</span></code>, <code class="docutils literal notranslate"><span class="pre">spark_3.0.0</span></code>.</p>
+<p>SBT developers can use</p>
+<div class="highlight-sbt notranslate"><div class="highlight"><pre><span></span>libraryDependencies += &quot;com.intel.analytics.zoo&quot; % &quot;analytics-zoo-bigdl_0.12.1-spark_2.4.3&quot; % &quot;0.9.0&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="nightly-build">
+<h4><strong>2.1.2 Nightly Build</strong><a class="headerlink" href="#nightly-build" title="Permalink to this headline">¶</a></h4>
+<p>Currently, Analytics Zoo nightly build is hosted on <a class="reference external" href="https://oss.sonatype.org/content/groups/public/com/intel/analytics/zoo/">SonaType</a>.</p>
+<p>To link your application with the latest Analytics Zoo nightly build, you should add some dependencies like <a class="reference external" href="#11-official-release">official releases</a>, but change <code class="docutils literal notranslate"><span class="pre">0.9.0</span></code> to the snapshot version (such as 0.10.0-snapshot), and add below repository to your pom.xml.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;repository&gt;</span>
+    <span class="nt">&lt;id&gt;</span>sonatype<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>sonatype repository<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;url&gt;</span>https://oss.sonatype.org/content/groups/public/<span class="nt">&lt;/url&gt;</span>
+    <span class="nt">&lt;releases&gt;</span>
+        <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+    <span class="nt">&lt;/releases&gt;</span>
+    <span class="nt">&lt;snapshots&gt;</span>
+        <span class="nt">&lt;enabled&gt;</span>true<span class="nt">&lt;/enabled&gt;</span>
+    <span class="nt">&lt;/snapshots&gt;</span>
+<span class="nt">&lt;/repository&gt;</span>
+</pre></div>
+</div>
+<p>SBT developers can use</p>
+<div class="highlight-sbt notranslate"><div class="highlight"><pre><span></span>resolvers += &quot;ossrh repository&quot; at &quot;https://oss.sonatype.org/content/repositories/snapshots/&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="build-a-scala-project">
+<h3><strong>2.2 Build a Scala project</strong><a class="headerlink" href="#build-a-scala-project" title="Permalink to this headline">¶</a></h3>
+<p>To enable Analytics Zoo in project, you should add Analytics Zoo to your project’s dependencies using maven or sbt. Here is a <a class="reference external" href="https://github.com/intel-analytics/zoo-tutorials/tree/master/scala/SimpleMlp">simple MLP example</a> to show you how to use Analytics Zoo to build your own deep learning project using maven or sbt, and how to run the simple example in IDEA and spark-submit.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ray.html" class="btn btn-neutral float-right" title="RayOnSpark User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="databricks.html" class="btn btn-neutral float-left" title="Databricks User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Analytics Zoo Authors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

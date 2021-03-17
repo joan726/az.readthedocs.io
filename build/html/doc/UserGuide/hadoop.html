@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Hadoop/YARN User Guide &mdash; Analytics Zoo  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Databricks User Guide" href="databricks.html" />
+    <link rel="prev" title="K8s User Guide" href="k8s.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Analytics Zoo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf-quickstart.html">TensorFlow 1.15 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-keras-quickstart.html">Keras 2.3 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-pytorch-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf2keras-quickstart.html">TensorFlow 2 Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Colab User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">K8s User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Hadoop/YARN User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prepare-environment"><strong>1. Prepare Environment</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-for-cdh"><strong>1.1 Setup for CDH</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#yarn-client-mode"><strong>2. YARN Client Mode</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#yarn-cluster-mode"><strong>3. YARN Cluster Mode</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="databricks.html">Databricks User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scala.html">Scala User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ray.html">RayOnSpark User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zouwu.html">Zouwu User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Orca Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/orca-context.html">Orca Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/data-parallel-processing.html">Distributed Data-Parallel Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/distributed-training-inference.html">Distributed Training and Inference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Real-World Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Application/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Application/powered-by.html">Powered By</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Analytics Zoo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Hadoop/YARN User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/doc/UserGuide/hadoop.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hadoop-yarn-user-guide">
+<h1>Hadoop/YARN User Guide<a class="headerlink" href="#hadoop-yarn-user-guide" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>You can run Analytics Zoo programs on standard Hadoop/YARN clusters without any changes to the cluster (i.e., no need to pre-install Analytics Zoo or any Python libraries in the cluster).</p>
+<div class="section" id="prepare-environment">
+<h2><strong>1. Prepare Environment</strong><a class="headerlink" href="#prepare-environment" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">You need to first use <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/">conda</a> to prepare the Python environment <em><strong>on the local client machine</strong></em>. Create a conda environment and install all the needed Python libraries in the created conda environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n zoo <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7  <span class="c1"># &quot;zoo&quot; is conda environment name, you can use any name you like.</span>
+conda activate zoo
+
+<span class="c1"># Use conda or pip to install all the needed Python dependencies in the created conda environment.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You need to download and install JDK in the environment, and properly set the environment variable <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code>, which is required by Spark. <strong>JDK8</strong> is highly recommended.</p>
+<p>You may take the following commands as a reference for installing <a class="reference external" href="https://openjdk.java.net/install/">OpenJDK</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># For Ubuntu</span>
+sudo apt-get install openjdk-8-jre
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-8-openjdk-amd64/
+
+<span class="c1"># For CentOS</span>
+su -c <span class="s2">&quot;yum install java-1.8.0-openjdk&quot;</span>
+<span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.282.b08-1.el7_9.x86_64/jre
+
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$JAVA_HOME</span>/bin
+java -version  <span class="c1"># Verify the version of JDK.</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Check the Hadoop setup and configurations of your cluster. Make sure you properly set the environment variable <code class="docutils literal notranslate"><span class="pre">HADOOP_CONF_DIR</span></code>, which is needed to initialize Spark on YARN:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">HADOOP_CONF_DIR</span><span class="o">=</span>the directory of the hadoop and yarn configurations
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="setup-for-cdh">
+<h2><strong>1.1 Setup for CDH</strong><a class="headerlink" href="#setup-for-cdh" title="Permalink to this headline">¶</a></h2>
+</div>
+<hr class="docutils" />
+<div class="section" id="yarn-client-mode">
+<h2><strong>2. YARN Client Mode</strong><a class="headerlink" href="#yarn-client-mode" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Install Analytics Zoo in the created conda environment via pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install analytics-zoo
+</pre></div>
+</div>
+<p>View the <a class="reference internal" href="python.html"><span class="doc">Python User Guide</span></a> for more details.</p>
+</li>
+<li><p class="first">We recommend using <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code> at the very beginning of your code to initiate and run Analytics Zoo on standard Hadoop/YARN clusters in <a class="reference external" href="https://spark.apache.org/docs/latest/running-on-yarn.html#launching-spark-on-yarn">YARN client mode</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">init_orca_context</span><span class="p">(</span><span class="n">cluster_mode</span><span class="o">=</span><span class="s2">&quot;yarn-client&quot;</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s2">&quot;10g&quot;</span><span class="p">,</span> <span class="n">num_nodes</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By specifying cluster_mode to be “yarn-client”, <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code> would automatically prepare the runtime Python environment, detect the current Hadoop configurations from <code class="docutils literal notranslate"><span class="pre">HADOOP_CONF_DIR</span></code> and initiate the distributed execution engine on the underlying YARN cluster. View <a class="reference internal" href="../Orca/Overview/orca-context.html"><span class="doc">Orca Context</span></a> for more details.</p>
+</li>
+<li><p class="first">You can then simply run your Analytics Zoo program in a Jupyter notebook:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook --notebook-dir<span class="o">=</span>./ --ip<span class="o">=</span>* --no-browser
+</pre></div>
+</div>
+<p>or as a normal Python script (e.g. script.py):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python script.py
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="yarn-cluster-mode">
+<h2><strong>3. YARN Cluster Mode</strong><a class="headerlink" href="#yarn-cluster-mode" title="Permalink to this headline">¶</a></h2>
+<p>Follow the steps below if you need to run Analytics Zoo in <a class="reference external" href="https://spark.apache.org/docs/latest/running-on-yarn.html#launching-spark-on-yarn">YARN cluster mode</a>.</p>
+<ul>
+<li><p class="first">Download and extract <a class="reference external" href="https://spark.apache.org/downloads.html">Spark</a>. You are recommended to use <a class="reference external" href="https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz">Spark 2.4.3</a>. Set the environment variable <code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SPARK_HOME</span><span class="o">=</span>the root directory where you extract the downloaded Spark package
+</pre></div>
+</div>
+</li>
+<li><p class="first">Download and extract <a class="reference internal" href="../release.html"><span class="doc">Analytics Zoo</span></a>. Make sure the Analytics Zoo package you download is built with the compatible version with your Spark. Set the environment variable <code class="docutils literal notranslate"><span class="pre">ANALYTICS_ZOO_HOME</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">ANALYTICS_ZOO_HOME</span><span class="o">=</span>the root directory where you extract the downloaded Analytics Zoo package
+</pre></div>
+</div>
+</li>
+<li><p class="first">Pack the current conda environment to <code class="docutils literal notranslate"><span class="pre">environment.tar.gz</span></code> (you can use any name you like):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda pack -o environment.tar.gz
+</pre></div>
+</div>
+</li>
+<li><p class="first"><em>You need to write your Analytics Zoo program as a Python script.</em> In the script, you can call <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code> and specify cluster_mode to be “spark-submit”:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">init_orca_context</span><span class="p">(</span><span class="n">cluster_mode</span><span class="o">=</span><span class="s2">&quot;spark-submit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use <code class="docutils literal notranslate"><span class="pre">spark-submit</span></code> to submit your Analytics Zoo program (e.g. script.py):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">PYSPARK_PYTHON</span><span class="o">=</span>./environment/bin/python <span class="si">${</span><span class="nv">ANALYTICS_ZOO_HOME</span><span class="si">}</span>/bin/spark-submit-python-with-zoo.sh <span class="se">\</span>
+    --conf spark.yarn.appMasterEnv.PYSPARK_PYTHON<span class="o">=</span>./environment/bin/python <span class="se">\</span>
+    --master yarn-cluster <span class="se">\</span>
+    --executor-memory 10g <span class="se">\</span>
+    --driver-memory 10g <span class="se">\</span>
+    --executor-cores <span class="m">8</span> <span class="se">\</span>
+    --num-executors <span class="m">2</span> <span class="se">\</span>
+    --archives environment.tar.gz#environment <span class="se">\</span>
+    script.py
+</pre></div>
+</div>
+<p>You can adjust the configurations according to your cluster settings.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="databricks.html" class="btn btn-neutral float-right" title="Databricks User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="k8s.html" class="btn btn-neutral float-left" title="K8s User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Analytics Zoo Authors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

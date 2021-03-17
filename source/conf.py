@@ -72,6 +72,7 @@ author = 'Analytics Zoo Authors'
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
+    'sphinx_click',
     'sphinx_click.ext',
     'sphinx-jsonschema',
     'sphinx.ext.napoleon',

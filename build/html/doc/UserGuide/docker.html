@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Docker User Guide &mdash; Analytics Zoo  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="K8s User Guide" href="k8s.html" />
+    <link rel="prev" title="Colab User Guide" href="colab.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Analytics Zoo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf-quickstart.html">TensorFlow 1.15 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-keras-quickstart.html">Keras 2.3 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-pytorch-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf2keras-quickstart.html">TensorFlow 2 Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Colab User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pull-docker-image"><strong>1. Pull Docker Image</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#launch-docker-container"><strong>2. Launch Docker Container</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-jupyter-notebook-examples-in-the-container"><strong>3. Run Jupyter Notebook Examples in the Container</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-the-jupyter-notebook-services"><strong>3.1 Start the Jupyter Notebook services</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-to-jupyter-notebook-service-from-a-browser"><strong>3.2 Connect to Jupyter Notebook service from a browser</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-analytics-zoo-jupyter-notebooks"><strong>3.3 Run Analytics Zoo Jupyter Notebooks</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#shut-down-docker-container"><strong>4. Shut Down Docker Container</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">K8s User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hadoop.html">Hadoop/YARN User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="databricks.html">Databricks User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scala.html">Scala User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ray.html">RayOnSpark User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zouwu.html">Zouwu User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Orca Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/orca-context.html">Orca Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/data-parallel-processing.html">Distributed Data-Parallel Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/distributed-training-inference.html">Distributed Training and Inference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Real-World Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Application/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Application/powered-by.html">Powered By</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Analytics Zoo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Docker User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/doc/UserGuide/docker.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="docker-user-guide">
+<h1>Docker User Guide<a class="headerlink" href="#docker-user-guide" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="pull-docker-image">
+<h2><strong>1. Pull Docker Image</strong><a class="headerlink" href="#pull-docker-image" title="Permalink to this headline">¶</a></h2>
+<p>You may pull a Docker image from the  <a class="reference external" href="https://hub.docker.com/r/intelanalytics/analytics-zoo">Analytics Zoo Docker Hub</a>.</p>
+<p>To pull the nightly build version, use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker pull intelanalytics/analytics-zoo:latest
+</pre></div>
+</div>
+<p>To pull other versions, please refer to <a class="reference external" href="https://hub.docker.com/r/intelanalytics/analytics-zoo/tags?page=1&amp;ordering=last_updated">Analytics Zoo Docker Hub Tags</a>, select a tag and use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo docker pull intelanalytics/analytics-zoo:tag_name
+</pre></div>
+</div>
+<p><strong>Configuring resources</strong></p>
+<p>For Docker Desktop users, the default resources (2 CPUs and 2GB memory) are relatively small, and you may want to change them to larger values (8GB memory and 4 CPUs should be a good estimate for most examples, and the exact memory requirements vary for different applications). For more information, view the Docker documentation for <a class="reference external" href="https://docs.docker.com/docker-for-mac/#resources">MacOS</a> and <a class="reference external" href="https://docs.docker.com/docker-for-windows/#resources">Windows</a>.</p>
+<p><strong>Speed up pulling image by adding mirrors</strong></p>
+<p>To speed up pulling the image from DockerHub, you may add the registry-mirrors key and value by editing <code class="docutils literal notranslate"><span class="pre">daemon.json</span></code> (located in <code class="docutils literal notranslate"><span class="pre">/etc/docker/</span></code> folder on Linux):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;registry-mirrors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://&lt;my-docker-mirror-host&gt;&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For instance, users in China may add the USTC mirror as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;registry-mirrors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After that, flush changes and restart docker：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">docker</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="launch-docker-container">
+<h2><strong>2. Launch Docker Container</strong><a class="headerlink" href="#launch-docker-container" title="Permalink to this headline">¶</a></h2>
+<p>After pulling the Analytics Zoo Docker image, you can launch an Analytics Zoo Docker container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">net</span><span class="o">=</span><span class="n">host</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">NotebookPort</span><span class="o">=</span><span class="mi">12345</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">NotebookToken</span><span class="o">=</span><span class="s2">&quot;your-token&quot;</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">http_proxy</span><span class="o">=</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">your</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">host</span><span class="p">:</span><span class="n">your</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">port</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">https_proxy</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">your</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">host</span><span class="p">:</span><span class="n">your</span><span class="o">-</span><span class="n">proxy</span><span class="o">-</span><span class="n">port</span> \
+    <span class="n">intelanalytics</span><span class="o">/</span><span class="n">analytics</span><span class="o">-</span><span class="n">zoo</span><span class="p">:</span><span class="n">latest</span> <span class="n">bash</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The value 12345 is a user specified port number.</li>
+<li>The value “your-token” is a user specified string.</li>
+<li>If you need to use http/https proxy, please use -e http_proxy/https_proxy</li>
+</ul>
+<p>Once the container is successfully launched, you will automatically login into the container and see this as the output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">root</span><span class="o">@</span><span class="p">[</span><span class="n">hostname</span><span class="p">]:</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">work</span><span class="c1">#</span>
+</pre></div>
+</div>
+<p>The /opt/work directory contains:</p>
+<ul class="simple">
+<li>download-analytics-zoo.sh is used for downloading Analytics-Zoo distributions.</li>
+<li>start-notebook.sh is used for starting the jupyter notebook. You can specify the environment settings and spark settings to start a specified jupyter notebook.</li>
+<li>analytics-Zoo-${ANALYTICS_ZOO_VERSION} is the Analytics-Zoo home of Analytics-Zoo distribution.</li>
+<li>analytics-zoo-SPARK_x.x-x.x.x-dist.zip is the zip file of Analytics-Zoo distribution.</li>
+<li>spark-${SPARK_VERSION} is the Spark home.</li>
+<li>analytics-zoo is cloned from https://github.com/intel-analytics/analytics-zoo, contains apps, examples using analytics-zoo.</li>
+</ul>
+</div>
+<div class="section" id="run-jupyter-notebook-examples-in-the-container">
+<h2><strong>3. Run Jupyter Notebook Examples in the Container</strong><a class="headerlink" href="#run-jupyter-notebook-examples-in-the-container" title="Permalink to this headline">¶</a></h2>
+<p>After a Docker container is launched and user login into the container, you can start the Jupyter Notebook service inside the container.</p>
+<div class="section" id="start-the-jupyter-notebook-services">
+<h3><strong>3.1 Start the Jupyter Notebook services</strong><a class="headerlink" href="#start-the-jupyter-notebook-services" title="Permalink to this headline">¶</a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">/opt/work</span></code> directory, run this command line to start the Jupyter Notebook service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">start</span><span class="o">-</span><span class="n">notebook</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>You will see the output message like below. This means the Jupyter Notebook service has started successfully within the container.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[I 01:04:45.625 NotebookApp] Serving notebooks from local directory: /opt/work/analytics-zoo-0.5.0-SNAPSHOT/apps
+[I 01:04:45.625 NotebookApp] The Jupyter Notebook is running at:
+[I 01:04:45.625 NotebookApp] http://(the-host-name or 127.0.0.1):12345/?token=...
+[I 01:04:45.625 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+</pre></div>
+</div>
+</div>
+<div class="section" id="connect-to-jupyter-notebook-service-from-a-browser">
+<h3><strong>3.2 Connect to Jupyter Notebook service from a browser</strong><a class="headerlink" href="#connect-to-jupyter-notebook-service-from-a-browser" title="Permalink to this headline">¶</a></h3>
+<p>After the Jupyter Notebook service is successfully started, you can connect to the Jupyter Notebook service from a browser.</p>
+<ol class="simple">
+<li>Get the IP address of the container</li>
+<li>Launch a browser, and connect to the Jupyter Notebook service with the URL: https://container-ip-address:port-number/?token=your-token
+As a result, you will see the Jupyter Notebook like this:</li>
+</ol>
+<p><img alt="../../_images/notebook1.jpg" src="../../_images/notebook1.jpg" /></p>
+</div>
+<div class="section" id="run-analytics-zoo-jupyter-notebooks">
+<h3><strong>3.3 Run Analytics Zoo Jupyter Notebooks</strong><a class="headerlink" href="#run-analytics-zoo-jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
+<p>After connecting to the Jupyter Notebook in the browser, you can run multiple Analytics Zoo Jupyter Notebook examples. The example shown below is the “dogs-vs-cats”.</p>
+<ul class="simple">
+<li>Click into the “dogs-vs-cats” folder:</li>
+</ul>
+<p><img alt="../../_images/notebook2.jpg" src="../../_images/notebook2.jpg" /></p>
+<ul class="simple">
+<li>Open the notebook file:</li>
+</ul>
+<p><img alt="../../_images/notebook3.jpg" src="../../_images/notebook3.jpg" /></p>
+<ul class="simple">
+<li>Start to run the “dogs-vs-cats” notebook:</li>
+</ul>
+<p><img alt="../../_images/notebook4.jpg" src="../../_images/notebook4.jpg" /></p>
+<ul class="simple">
+<li>Run through the example and check the prediction:</li>
+</ul>
+<p><img alt="../../_images/notebook5.jpg" src="../../_images/notebook5.jpg" /></p>
+</div>
+</div>
+<div class="section" id="shut-down-docker-container">
+<h2><strong>4. Shut Down Docker Container</strong><a class="headerlink" href="#shut-down-docker-container" title="Permalink to this headline">¶</a></h2>
+<p>You should shut down the Analytics Zoo Docker container after using it.</p>
+<ol class="simple">
+<li>You can list all the active Docker containers by command line:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">docker</span> <span class="n">ps</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li>You will see your docker containers:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONTAINER</span> <span class="n">ID</span>        <span class="n">IMAGE</span>                                        <span class="n">COMMAND</span>                  <span class="n">CREATED</span>             <span class="n">STATUS</span>              <span class="n">PORTS</span>               <span class="n">NAMES</span>
+<span class="mi">40</span><span class="n">de2cdad025</span>        <span class="n">intelanalytics</span><span class="o">/</span><span class="n">analytics</span><span class="o">-</span><span class="n">zoo</span><span class="p">:</span><span class="n">latest</span>          <span class="s2">&quot;/opt/work/start-n...&quot;</span>   <span class="mi">3</span> <span class="n">hours</span> <span class="n">ago</span>         <span class="n">Up</span> <span class="mi">3</span> <span class="n">hours</span>                               <span class="n">upbeat_al</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li>Shut down the corresponding docker container by its ID:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$sudo docker rm -f 40de2cdad025
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="k8s.html" class="btn btn-neutral float-right" title="K8s User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="colab.html" class="btn btn-neutral float-left" title="Colab User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Analytics Zoo Authors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

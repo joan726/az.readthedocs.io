@@ -1,0 +1,438 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Zouwu User Guide &mdash; Analytics Zoo  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Developer Guide" href="develop.html" />
+    <link rel="prev" title="RayOnSpark User Guide" href="ray.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Analytics Zoo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf-quickstart.html">TensorFlow 1.15 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-keras-quickstart.html">Keras 2.3 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-pytorch-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf2keras-quickstart.html">TensorFlow 2 Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Colab User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">K8s User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hadoop.html">Hadoop/YARN User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="databricks.html">Databricks User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scala.html">Scala User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ray.html">RayOnSpark User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zouwu User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview"><strong>1. Overview</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install"><strong>2. Install</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-autots-pipeline-with-automl"><strong>3. Use AutoTS Pipeline (with AutoML)</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initialize-orca-context"><strong>3.1 Initialize Orca Context</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-input-data"><strong>3.2 Prepare input data</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-autotstrainer"><strong>3.3 Create AutoTSTrainer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#train-autots-pipeline"><strong>3.4 Train AutoTS pipeline</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-tspipeline"><strong>3.5 Use TSPipeline</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#use-standalone-forecaster-pipeline"><strong>4. Use Standalone Forecaster Pipeline</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><strong>4.1 Initialize Orca Context</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-a-forecaster"><strong>4.2 Create a Forecaster</strong></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lstmforecaster"><strong>4.2.1 LSTMForecaster</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mtnetforecaster"><strong>4.2.2 MTNetForecaster</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tcmfforecaster"><strong>4.2.3 TCMFForecaster</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Orca Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/orca-context.html">Orca Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/data-parallel-processing.html">Distributed Data-Parallel Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/distributed-training-inference.html">Distributed Training and Inference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Real-World Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Application/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Application/powered-by.html">Powered By</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Analytics Zoo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Zouwu User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/doc/UserGuide/zouwu.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="zouwu-user-guide">
+<h1>Zouwu User Guide<a class="headerlink" href="#zouwu-user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2><strong>1. Overview</strong><a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><em>Zouwu</em> is an application framework for building large-scale time series analysis applications.</p>
+<p>There are two ways to use <em>Zouwu</em> for time series analysis:</p>
+<ul class="simple">
+<li>AutoML enabled pipelines (i.e. <a class="reference external" href="#3-use-autots-pipeline-with-automl">AutoTS</a>)</li>
+<li>Standalone <a class="reference external" href="#4-use-standalone-forecaster-pipeline">forecast pipeline</a> without AutoML</li>
+</ul>
+</div>
+<div class="section" id="install">
+<h2><strong>2. Install</strong><a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p><em>Zouwu</em> depends on the Python libraries below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python <span class="m">3</span>.6 or <span class="m">3</span>.7
+pySpark
+analytics-zoo
+tensorflow&gt;<span class="o">=</span><span class="m">1</span>.15.0,&lt;<span class="m">2</span>.0.0
+<span class="nv">h5py</span><span class="o">==</span><span class="m">2</span>.10.0
+ray<span class="o">[</span>tune<span class="o">]==</span><span class="m">0</span>.8.4
+psutil
+aiohttp
+setproctitle
+pandas
+scikit-learn&gt;<span class="o">=</span><span class="m">0</span>.20.0,&lt;<span class="m">0</span>.24.0
+requests
+</pre></div>
+</div>
+<p>You can easily install all the dependencies for <em>Zouwu</em> as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n my_env <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+conda activate my_env
+pip install --pre analytics-zoo<span class="o">[</span>automl<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="use-autots-pipeline-with-automl">
+<h2><strong>3. Use AutoTS Pipeline (with AutoML)</strong><a class="headerlink" href="#use-autots-pipeline-with-automl" title="Permalink to this headline">¶</a></h2>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">AutoTS</span></code> package to to build a time series forecasting pipeline with AutoML.</p>
+<p>The general workflow has two steps:</p>
+<ul class="simple">
+<li>Create a <a class="reference external" href="#33-create-autotstrainer">AutoTSTrainer</a> and train; it will then return a <a class="reference external" href="#35-use-tspipeline">TSPipeline</a>.</li>
+<li>Use <a class="reference external" href="#35-use-tspipeline">TSPipeline</a> to do prediction, evaluation, and incremental fitting.</li>
+</ul>
+<p>View <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/blob/master/pyzoo/zoo/zouwu/use-case/network_traffic/network_traffic_autots_forecasting.ipynb">AutoTS example</a> for more details.</p>
+<div class="section" id="initialize-orca-context">
+<h3><strong>3.1 Initialize Orca Context</strong><a class="headerlink" href="#initialize-orca-context" title="Permalink to this headline">¶</a></h3>
+<p>AutoTS uses <a class="reference internal" href="ray.html"><span class="doc">RayOnSpark</span></a> to train (or <code class="docutils literal notranslate"><span class="pre">fit</span></code>) the time series pipeline, and needs to call <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code> with argument <code class="docutils literal notranslate"><span class="pre">init_ray_on_spark=True</span></code>.</p>
+<p>View <a class="reference internal" href="../Orca/Overview/orca-context.html"><span class="doc">Orca Context</span></a> for more details.</p>
+<ul class="simple">
+<li>Local mode</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span><span class="p">,</span> <span class="n">stop_orca_context</span>
+<span class="n">init_orca_context</span><span class="p">(</span><span class="n">cluster_mode</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;2g&#39;</span><span class="p">,</span> <span class="n">init_ray_on_spark</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>YARN client mode</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span><span class="p">,</span> <span class="n">stop_orca_context</span>
+<span class="n">init_orca_context</span><span class="p">(</span><span class="n">cluster_mode</span><span class="o">=</span><span class="s2">&quot;yarn-client&quot;</span><span class="p">,</span>
+                  <span class="n">num_nodes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                  <span class="n">conda_name</span><span class="o">=</span><span class="s1">&#39;my_env&#39;</span><span class="p">,</span>
+                  <span class="n">extra_memory_for_ray</span><span class="o">=</span><span class="s2">&quot;10g&quot;</span><span class="p">,</span>
+                  <span class="n">object_store_memory</span><span class="o">=</span><span class="s1">&#39;5g&#39;</span><span class="p">,</span>
+                  <span class="n">init_ray_on_spark</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-input-data">
+<h3><strong>3.2 Prepare input data</strong><a class="headerlink" href="#prepare-input-data" title="Permalink to this headline">¶</a></h3>
+<p>You should prepare the training dataset and the optional validation dataset. Both training and validation data need to be provided as <em>Pandas Dataframe</em>.  The dataframe should have at least two columns:</p>
+<ul class="simple">
+<li>The <em>datetime</em> column, which should have Pandas datetime format (you can use <code class="docutils literal notranslate"><span class="pre">pandas.to_datetime</span></code> to convert a string into a datetime format)</li>
+<li>The <em>target</em> column, which contains the data points at the associated timestamps; these data points will be used to predict future data points.</li>
+</ul>
+<p>You may have other input columns for each row as extra feature; so the final input data could look something like below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>datetime    target  extra_feature_1  extra_feature_2
+<span class="m">2019</span>-06-06  <span class="m">1</span>.2     <span class="m">1</span>                <span class="m">2</span>
+<span class="m">2019</span>-06-07  <span class="m">2</span>.30    <span class="m">2</span>                <span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-autotstrainer">
+<h3><strong>3.3 Create AutoTSTrainer</strong><a class="headerlink" href="#create-autotstrainer" title="Permalink to this headline">¶</a></h3>
+<p>You can create an <code class="docutils literal notranslate"><span class="pre">AutoTSTrainer</span></code> as follows (<code class="docutils literal notranslate"><span class="pre">dt_col</span></code> is the datetime, <code class="docutils literal notranslate"><span class="pre">target_col</span></code> is the target column, and <code class="docutils literal notranslate"><span class="pre">extra_features_col</span></code> is the extra features):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.zouwu.autots.forecast</span> <span class="kn">import</span> <span class="n">AutoTSTrainer</span>
+
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">AutoTSTrainer</span><span class="p">(</span><span class="n">dt_col</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+                        <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span>
+                        <span class="n">horizon</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                        <span class="n">extra_features_col</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;extra_feature_1&quot;</span><span class="p">,</span><span class="s2">&quot;extra_feature_2&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Refer to <a class="reference external" href="#">AutoTSTrainer API Doc</a> for more details.</p>
+</div>
+<div class="section" id="train-autots-pipeline">
+<h3><strong>3.4 Train AutoTS pipeline</strong><a class="headerlink" href="#train-autots-pipeline" title="Permalink to this headline">¶</a></h3>
+<p>You can then train on the input data using <code class="docutils literal notranslate"><span class="pre">AutoTSTrainer.fit</span></code> with AutoML as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ts_pipeline</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span> <span class="n">validation_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After training, it will return a TSPipeline, which includes not only the model, but also the data preprocessing/post processing steps.</p>
+<p>Appropriate hyperparameters are automatically selected for the models and data processing steps in the pipeline during the fit process, and you may use built-in <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/blob/master/docs/docs/ProgrammingGuide/AutoML/visualization">visualization tool</a> to inspect the training results after training stopped.</p>
+</div>
+<div class="section" id="use-tspipeline">
+<h3><strong>3.5 Use TSPipeline</strong><a class="headerlink" href="#use-tspipeline" title="Permalink to this headline">¶</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">TSPipeline.predict|evaluate|fit</span></code> for prediction, evaluation or (incremental) fitting. (Note that incremental fitting on TSPipeline just update the model weights the standard way, which does not involve AutoML).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#predict</span>
+<span class="n">ts_pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+<span class="c1">#evaluate</span>
+<span class="n">ts_pipeline</span><span class="o">.</span><span class="n">evalute</span><span class="p">(</span><span class="n">val_df</span><span class="p">)</span>
+<span class="c1">#incremental fitting</span>
+<span class="n">ts_pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">new_train_df</span><span class="p">,</span> <span class="n">new_val_df</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">TSPipeline.save|load</span></code> to load or save.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.zouwu.autots.forecast</span> <span class="kn">import</span> <span class="n">TSPipeline</span>
+<span class="n">loaded_ppl</span> <span class="o">=</span> <span class="n">TSPipeline</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+<span class="c1"># ... do sth. e.g. incremental fitting</span>
+<span class="n">loaded_ppl</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">another_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>:  <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code> is not needed if you just use the trained TSPipeline for inference, evaluation or incremental fitting.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="use-standalone-forecaster-pipeline">
+<h2><strong>4. Use Standalone Forecaster Pipeline</strong><a class="headerlink" href="#use-standalone-forecaster-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>Zouwu also provides a set of standalone time series forecaster, which are based on deep learning models (without AutoML support), including</p>
+<ul class="simple">
+<li>TCNForecaster</li>
+<li>LSTMForecaster</li>
+<li>MTNetForecaster</li>
+<li>TCMFForecaster</li>
+</ul>
+<p>View <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/blob/master/pyzoo/zoo/zouwu/use-case/network_traffic/network_traffic_model_forecasting.ipynb">Network Traffic Prediction</a> and <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/tree/master/pyzoo/zoo/zouwu/use-case/AIOps">Datacenter AIOps</a> notebooks for some examples.</p>
+<div class="section" id="id1">
+<h3><strong>4.1 Initialize Orca Context</strong><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>First, call <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code> as follows</p>
+<ul class="simple">
+<li>Local mode</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span><span class="p">,</span> <span class="n">stop_orca_context</span>
+<span class="n">init_orca_context</span><span class="p">(</span><span class="n">cluster_mode</span><span class="o">=</span><span class="s2">&quot;local&quot;</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;2g&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>YARN client mode</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span><span class="p">,</span> <span class="n">stop_orca_context</span>
+<span class="n">init_orca_context</span><span class="p">(</span><span class="n">cluster_mode</span><span class="o">=</span><span class="s2">&quot;yarn-client&quot;</span><span class="p">,</span>
+                  <span class="n">num_nodes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cores</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                  <span class="n">conda_name</span><span class="o">=</span><span class="s1">&#39;my_env&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>View <a class="reference internal" href="../Orca/Overview/orca-context.html"><span class="doc">Orca Context</span></a> for more details.</p>
+</div>
+<div class="section" id="create-a-forecaster">
+<h3><strong>4.2 Create a Forecaster</strong><a class="headerlink" href="#create-a-forecaster" title="Permalink to this headline">¶</a></h3>
+<p>Next, create an appropriate Forecaster to fit, evaluate or predict on the input data.</p>
+<div class="section" id="lstmforecaster">
+<h4><strong>4.2.1 LSTMForecaster</strong><a class="headerlink" href="#lstmforecaster" title="Permalink to this headline">¶</a></h4>
+<p>LSTMForecaster wraps a vanilla LSTM model, and is suitable for univariate time series forecasting.</p>
+<p>View Network Traffic Prediction <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/blob/master/pyzoo/zoo/zouwu/use-case/network_traffic/network_traffic_model_forecasting.ipynb">notebook</a> and <a class="reference external" href="#">LSTMForecaster API Doc</a> for more details.</p>
+</div>
+<div class="section" id="mtnetforecaster">
+<h4><strong>4.2.2 MTNetForecaster</strong><a class="headerlink" href="#mtnetforecaster" title="Permalink to this headline">¶</a></h4>
+<p>MTNetForecaster wraps a MTNet model. The model architecture mostly follows the <a class="reference external" href="https://arxiv.org/abs/1809.02105">MTNet paper</a> with slight modifications, and is suitable for multivariate time series forecasting.</p>
+<p>View Network Traffic Prediction <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/blob/master/pyzoo/zoo/zouwu/use-case/network_traffic/network_traffic_model_forecasting.ipynb">notebook</a> and <a class="reference external" href="#">MTNetForecaster API Doc</a> for more details.</p>
+</div>
+<div class="section" id="tcmfforecaster">
+<h4><strong>4.2.3 TCMFForecaster</strong><a class="headerlink" href="#tcmfforecaster" title="Permalink to this headline">¶</a></h4>
+<p>TCMFForecaster wraps a model architecture that follows implementation of the paper <a class="reference external" href="https://arxiv.org/abs/1905.03806">DeepGLO paper</a> with slight modifications. It is especially suitable for extremely high dimensional (up-to millions) multivariate time series forecasting.</p>
+<p>View High-dimensional Electricity Data Forecasting <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/blob/master/pyzoo/zoo/zouwu/examples/run_electricity.py">example</a> and <a class="reference external" href="#">TCMFForecaster API Doc</a> for more details.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="develop.html" class="btn btn-neutral float-right" title="Developer Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ray.html" class="btn btn-neutral float-left" title="RayOnSpark User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Analytics Zoo Authors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

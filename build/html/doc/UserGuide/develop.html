@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Developer Guide &mdash; Analytics Zoo  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Orca Context" href="../Orca/Overview/orca-context.html" />
+    <link rel="prev" title="Zouwu User Guide" href="zouwu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Analytics Zoo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf-quickstart.html">TensorFlow 1.15 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-keras-quickstart.html">Keras 2.3 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-pytorch-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf2keras-quickstart.html">TensorFlow 2 Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Colab User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">K8s User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hadoop.html">Hadoop/YARN User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="databricks.html">Databricks User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scala.html">Scala User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ray.html">RayOnSpark User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zouwu.html">Zouwu User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python"><strong>1. Python</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build"><strong>1.1 Build</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ide-setup"><strong>1.2 IDE Setup</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scala"><strong>2. Scala</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1"><strong>2.1 Build</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2"><strong>2.2 IDE Setup</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Orca Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/orca-context.html">Orca Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/data-parallel-processing.html">Distributed Data-Parallel Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/distributed-training-inference.html">Distributed Training and Inference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Real-World Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Application/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Application/powered-by.html">Powered By</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Analytics Zoo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Developer Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/doc/UserGuide/develop.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="developer-guide">
+<h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>Analytics Zoo source code is available at <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo">GitHub</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/intel-analytics/analytics-zoo.git
+</pre></div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span></code> will download the development version of Analytics Zoo. If you want a release version, you can use the command <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span></code> to change the specified version.</p>
+<div class="section" id="python">
+<h2><strong>1. Python</strong><a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="build">
+<h3><strong>1.1 Build</strong><a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h3>
+<p>To generate a new <a class="reference external" href="https://pythonwheels.com/">whl</a> package for pip install, you can run the following script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash analytics-zoo/pyzoo/dev/build.sh linux default <span class="nb">false</span>
+</pre></div>
+</div>
+<p><strong>Arguments:</strong></p>
+<ul class="simple">
+<li>The first argument is the <strong>platform</strong> to build for. Either ‘linux’ or ‘mac’.</li>
+<li>The second argument is the analytics-zoo <strong>version</strong> to build for. ‘default’ means the default version for the current branch. You can also specify a different version if you wish, e.g., ‘0.6.0.dev1’.</li>
+<li>You can also add other profiles to build the package, especially Spark and BigDL versions.
+For example, under the situation that <code class="docutils literal notranslate"><span class="pre">pyspark==2.4.3</span></code> is a dependency, you need to add profiles <code class="docutils literal notranslate"><span class="pre">-Dspark.version=2.4.3</span> <span class="pre">-Dbigdl.artifactId=bigdl-SPARK_2.4</span> <span class="pre">-P</span> <span class="pre">spark_2.4+</span></code> to build Analytics Zoo for Spark 2.4.3.</li>
+</ul>
+<p>After running the above command, you will find a <code class="docutils literal notranslate"><span class="pre">whl</span></code> file under the folder <code class="docutils literal notranslate"><span class="pre">analytics-zoo/pyzoo/dist/</span></code>. You can then directly pip install it to your local Python environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install analytics-zoo/pyzoo/dist/analytics_zoo-VERSION-py2.py3-none-PLATFORM_x86_64.whl
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="python.html"><span class="doc">here</span></a> for more instructions to run analytics-zoo after pip install.</p>
+</div>
+<div class="section" id="ide-setup">
+<h3><strong>1.2 IDE Setup</strong><a class="headerlink" href="#ide-setup" title="Permalink to this headline">¶</a></h3>
+<p>Any IDE that support python should be able to run Analytics Zoo. PyCharm works fine for us.</p>
+<p>You need to do the following preparations before starting the IDE to successfully run an Analytics Zoo Python program in the IDE:</p>
+<ul class="simple">
+<li>Build Analytics Zoo; see <a class="reference external" href="#21-build">here</a> for more instructions.</li>
+<li>Prepare Spark environment by either setting <code class="docutils literal notranslate"><span class="pre">SPARK_HOME</span></code> as the environment variable or pip install <code class="docutils literal notranslate"><span class="pre">pyspark</span></code>. Note that the Spark version should match the one you build Analytics Zoo on.</li>
+<li>Set BIGDL_CLASSPATH:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">BIGDL_CLASSPATH</span><span class="o">=</span>analytics-zoo/dist/lib/analytics-zoo-*-jar-with-dependencies.jar
+</pre></div>
+</div>
+<ul class="simple">
+<li>Prepare BigDL Python environment by either downloading BigDL source code from <a class="reference external" href="https://github.com/intel-analytics/BigDL">GitHub</a> or pip install <code class="docutils literal notranslate"><span class="pre">bigdl</span></code>. Note that the BigDL version should match the one you build Analytics Zoo on.</li>
+<li>Add <code class="docutils literal notranslate"><span class="pre">pyzoo</span></code> and <code class="docutils literal notranslate"><span class="pre">spark-analytics-zoo.conf</span></code> to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>analytics-zoo/pyzoo:analytics-zoo/dist/conf/spark-analytics-zoo.conf:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+<p>If you download BigDL from <a class="reference external" href="https://github.com/intel-analytics/BigDL">GitHub</a>, you also need to add <code class="docutils literal notranslate"><span class="pre">BigDL/pyspark</span></code> to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span>BigDL/pyspark:<span class="nv">$PYTHONPATH</span>
+</pre></div>
+</div>
+<p>The above environmental variables should be available when running or debugging code in IDE.</p>
+<ul class="simple">
+<li>In PyCharm, go to RUN -&gt; Edit Configurations. In the “Run/Debug Configurations” panel, you can update the above environment variables in your configuration.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="scala">
+<h2><strong>2. Scala</strong><a class="headerlink" href="#scala" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3><strong>2.1 Build</strong><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Maven 3 is needed to build Analytics Zoo, you can download it from the <a class="reference external" href="https://maven.apache.org/download.cgi">maven website</a>.</p>
+<p>After installing Maven 3, please set the environment variable MAVEN_OPTS as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">MAVEN_OPTS</span><span class="o">=</span><span class="s2">&quot;-Xmx2g -XX:ReservedCodeCacheSize=512m&quot;</span>
+</pre></div>
+</div>
+<p><strong>Build using <code class="docutils literal notranslate"><span class="pre">make-dist.sh</span></code></strong></p>
+<p>It is highly recommended that you build Analytics Zoo using the <a class="reference external" href="https://github.com/intel-analytics/analytics-zoo/blob/master/make-dist.sh">make-dist.sh script</a> with <strong>Java 8</strong>.</p>
+<p>You can build Analytics Zoo with the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bash make-dist.sh
+</pre></div>
+</div>
+<p>After that, you can find a <code class="docutils literal notranslate"><span class="pre">dist</span></code> folder, which contains all the needed files to run a Analytics Zoo program. The files in <code class="docutils literal notranslate"><span class="pre">dist</span></code> include:</p>
+<ul class="simple">
+<li><strong>dist/lib/analytics-zoo-VERSION-jar-with-dependencies.jar</strong>: This jar package contains all dependencies except Spark classes.</li>
+<li><strong>dist/lib/analytics-zoo-VERSION-python-api.zip</strong>: This zip package contains all Python files of Analytics Zoo.</li>
+</ul>
+<p>The instructions above will build Analytics Zoo with Spark 2.4.3. To build with other spark versions, for example building analytics-zoo with spark 2.2.0, you can use <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">make-dist.sh</span> <span class="pre">-Dspark.version=2.2.0</span> <span class="pre">-Dbigdl.artifactId=bigdl_SPARK_2.2</span></code>.</p>
+<p><strong>Build with JDK 11</strong></p>
+<p>Spark starts to supports JDK 11 and Scala 2.12 at Spark 3.0. You can use <code class="docutils literal notranslate"><span class="pre">-P</span> <span class="pre">spark_3.x</span></code> to specify Spark3 and scala 2.12. Additionally, <code class="docutils literal notranslate"><span class="pre">make-dist.sh</span></code> default uses Java 8. To compile with Java 11, it is required to specify building opts <code class="docutils literal notranslate"><span class="pre">-Djava.version=11</span> <span class="pre">-Djavac.version=11</span></code>. You can build with <code class="docutils literal notranslate"><span class="pre">make-dist.sh</span></code>.</p>
+<p>It’s recommended to download <a class="reference external" href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html">Oracle JDK 11</a>. This will avoid possible incompatibilities with maven plugins. You should update <code class="docutils literal notranslate"><span class="pre">PATH</span></code> and make sure your <code class="docutils literal notranslate"><span class="pre">JAVA_HOME</span></code> environment variable is set to Java 11 if you’re running from the command line. If you’re running from an IDE, you need to make sure it is set to run maven with your current JDK.</p>
+<p>Build with <code class="docutils literal notranslate"><span class="pre">make-dist.sh</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bash make-dist.sh -P spark_3.x -Djava.version<span class="o">=</span><span class="m">11</span> -Djavac.version<span class="o">=</span><span class="m">11</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3><strong>2.2 IDE Setup</strong><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Analytics Zoo uses maven to organize project. You should choose an IDE that supports Maven project and scala language. IntelliJ IDEA works fine for us.</p>
+<p>In IntelliJ, you can open Analytics Zoo project root directly, and the IDE will import the project automatically.</p>
+<p>We set the scopes of spark related libraries to <code class="docutils literal notranslate"><span class="pre">provided</span></code> in the maven pom.xml, which, however, will cause a problem in IDE  (throwing <code class="docutils literal notranslate"><span class="pre">NoClassDefFoundError</span></code> when you run applications). You can easily change the scopes using the <code class="docutils literal notranslate"><span class="pre">all-in-one</span></code> profile.</p>
+<ul class="simple">
+<li>In Intellij, go to View -&gt; Tools Windows -&gt; Maven Projects. Then in the Maven Projects panel, Profiles -&gt; click “all-in-one”.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../Orca/Overview/orca-context.html" class="btn btn-neutral float-right" title="Orca Context" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="zouwu.html" class="btn btn-neutral float-left" title="Zouwu User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Analytics Zoo Authors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

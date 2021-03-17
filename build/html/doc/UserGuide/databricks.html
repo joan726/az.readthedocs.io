@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Databricks User Guide &mdash; Analytics Zoo  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/clipboard.min.js"></script>
+        <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Scala User Guide" href="scala.html" />
+    <link rel="prev" title="Hadoop/YARN User Guide" href="hadoop.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Analytics Zoo
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Quick Start</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf-quickstart.html">TensorFlow 1.15 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-keras-quickstart.html">Keras 2.3 Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-pytorch-quickstart.html">PyTorch Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/QuickStart/orca-tf2keras-quickstart.html">TensorFlow 2 Quickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="python.html">Python User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colab.html">Colab User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">K8s User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hadoop.html">Hadoop/YARN User Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Databricks User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-databricks-cluster"><strong>1. Create a Databricks Cluster</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-analytics-zoo-libraries"><strong>2. Installing Analytics Zoo libraries</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-spark-configuration"><strong>3. Setting Spark configuration</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-analytics-zoo-on-databricks"><strong>4. Running Analytics Zoo on Databricks</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scala.html">Scala User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ray.html">RayOnSpark User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zouwu.html">Zouwu User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Guide</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Orca Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/orca-context.html">Orca Context</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/data-parallel-processing.html">Distributed Data-Parallel Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Orca/Overview/distributed-training-inference.html">Distributed Training and Inference</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Real-World Applications</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Application/presentations.html">Presentations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Application/powered-by.html">Powered By</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Analytics Zoo</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Databricks User Guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/doc/UserGuide/databricks.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="databricks-user-guide">
+<h1>Databricks User Guide<a class="headerlink" href="#databricks-user-guide" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>You can run Analytics Zoo program on the <a class="reference external" href="https://databricks.com/">Databricks</a> cluster as follows.</p>
+<div class="section" id="create-a-databricks-cluster">
+<h2><strong>1. Create a Databricks Cluster</strong><a class="headerlink" href="#create-a-databricks-cluster" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Create either <a class="reference external" href="https://docs.databricks.com/getting-started/try-databricks.html">AWS Databricks</a> workspace or <a class="reference external" href="https://docs.microsoft.com/en-us/azure/azure-databricks/">Azure Databricks</a> workspace.</li>
+<li>Create a Databricks <a class="reference external" href="https://docs.databricks.com/clusters/create.html">clusters</a> using the UI. Choose Databricks runtime version. This guide is tested on Runtime 5.5 LTS (includes Apache Spark 2.4.3, Scala 2.11).</li>
+</ul>
+</div>
+<div class="section" id="installing-analytics-zoo-libraries">
+<h2><strong>2. Installing Analytics Zoo libraries</strong><a class="headerlink" href="#installing-analytics-zoo-libraries" title="Permalink to this headline">¶</a></h2>
+<p>In the left pane, click <strong>Clusters</strong> and select your cluster.</p>
+<p><img alt="../../_images/Databricks1.PNG" src="../../_images/Databricks1.PNG" /></p>
+<p>Install Analytics Zoo python environment using PyPI. Click <strong>Libraries &gt; Install New &gt; PyPI</strong>. Install official released version by texting “analytics-zoo” library. Or install latest <a class="reference external" href="https://pypi.org/project/analytics-zoo/#history">nightly build</a> of Analytics Zoo with the specified version.</p>
+<p><img alt="../../_images/Databricks2.PNG" src="../../_images/Databricks2.PNG" /></p>
+<p>Install Analytics Zoo prebuilt jar package. Click <strong>Libraries &gt; Install New &gt; Upload &gt; Jar</strong>. Download Analytics Zoo prebuilt package from <a class="reference internal" href="../release.html"><span class="doc">Release Page</span></a>. Please note that you should choose the same spark version of package as your Databricks runtime version. Unzip it. Find jar named “analytics-zoo-bigdl_<em>-spark_</em>-jar-with-dependencies.jar” in the lib directory. Drop the jar on Databricks.</p>
+<p><img alt="../../_images/Databricks3.PNG" src="../../_images/Databricks3.PNG" /></p>
+<p>Make sure the jar file and analytics-zoo (with PyPI) are installed on all clusters. In <strong>Libraries</strong> tab of your cluster, check installed libraries and click “Install automatically on all clusters” option in <strong>Admin Settings</strong>.</p>
+<p><img alt="../../_images/Databricks4.PNG" src="../../_images/Databricks4.PNG" /></p>
+</div>
+<div class="section" id="setting-spark-configuration">
+<h2><strong>3. Setting Spark configuration</strong><a class="headerlink" href="#setting-spark-configuration" title="Permalink to this headline">¶</a></h2>
+<p>On the cluster configuration page, click the <strong>Advanced Options</strong> toggle. Click the <strong>Spark</strong> tab. You can provide custom <a class="reference external" href="https://spark.apache.org/docs/latest/configuration.html">Spark configuration properties</a> in a cluster configuration. Please set it according to your cluster resource and program needs.</p>
+<p><img alt="../../_images/Databricks5.PNG" src="../../_images/Databricks5.PNG" /></p>
+<p>See below for an example of Spark config setting needed by Analytics Zoo. Here it sets 1 core per executor. Note that “spark.cores.max” needs to be properly set below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">shuffle</span><span class="o">.</span><span class="n">reduceLocality</span><span class="o">.</span><span class="n">enabled</span> <span class="n">false</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">serializer</span> <span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">serializer</span><span class="o">.</span><span class="n">JavaSerializer</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">shuffle</span><span class="o">.</span><span class="n">blockTransferService</span> <span class="n">nio</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">databricks</span><span class="o">.</span><span class="n">delta</span><span class="o">.</span><span class="n">preview</span><span class="o">.</span><span class="n">enabled</span> <span class="n">true</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">executor</span><span class="o">.</span><span class="n">cores</span> <span class="mi">1</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">speculation</span> <span class="n">false</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">scheduler</span><span class="o">.</span><span class="n">minRegisteredResourcesRatio</span> <span class="mf">1.0</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">cores</span><span class="o">.</span><span class="n">max</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-analytics-zoo-on-databricks">
+<h2><strong>4. Running Analytics Zoo on Databricks</strong><a class="headerlink" href="#running-analytics-zoo-on-databricks" title="Permalink to this headline">¶</a></h2>
+<p>Open a new notebook, and call <code class="docutils literal notranslate"><span class="pre">init_orca_context</span></code> at the beginning of your code (with <code class="docutils literal notranslate"><span class="pre">cluster_mode</span></code> set to “standalone”).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zoo.orca</span> <span class="kn">import</span> <span class="n">init_orca_context</span><span class="p">,</span> <span class="n">stop_orca_context</span>
+<span class="n">init_orca_context</span><span class="p">(</span><span class="n">cluster_mode</span><span class="o">=</span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span> <span class="n">num_executors</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Output on Databricks:</p>
+<p><img alt="../../_images/Databricks6.PNG" src="../../_images/Databricks6.PNG" /></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="scala.html" class="btn btn-neutral float-right" title="Scala User Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hadoop.html" class="btn btn-neutral float-left" title="Hadoop/YARN User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Analytics Zoo Authors.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
