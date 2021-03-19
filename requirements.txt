@@ -11,3 +11,4 @@ readthedocs-sphinx-ext
 sphinx-click
 sphinx-book-theme
 sphinx_rtd_theme
+sphinx-jsonschema
