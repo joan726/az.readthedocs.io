@@ -12,3 +12,7 @@ sphinx-click
 sphinx-book-theme
 sphinx_rtd_theme
 sphinx-jsonschema
+sphinx-copybutton
+sphinx-version-warning
+sphinxemoji
+click
